@@ -4,8 +4,8 @@ import models.characters.Soldier;
 
 public class Barrack extends Building {
 
- public Barrack(String name) {
-  super("caserne");
+ public Barrack() {
+  super("caserne", 0);
  }
 
  public void generateSoldier(Soldier soldier) {

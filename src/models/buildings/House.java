@@ -6,8 +6,8 @@ public class House extends Building {
 
  Villager villager;
 
- public House(String name, int production) {
-  super(name, production);
+ public House(String name) {
+  super("maison");
  }
 
  public void newVillager(Villager villager) {

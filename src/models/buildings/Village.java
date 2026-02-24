@@ -1,3 +1,4 @@
+package models.buildings;
 public class Village {
     private int wood = 0;
     private int stone = 0;

@@ -44,8 +44,10 @@ public class Task {
 
     public int workFarm(Farm farm, Village village) {
         if (farm.getQuantity() > 0) {
-                village.setFood(village.getFood() + 5);
-                System.out.println("Vous avez gagné 5 de nourriture !");
+            village.setFood(village.getFood() + 5);
+            System.out.println("Vous avez gagné 5 de nourriture !");
+        } else {
+            System.out.println("Vous n'avez pas de ferme.");
         }
         return village.getFood();
     }
@@ -53,8 +55,20 @@ public class Task {
     public int miningStone(Mine mine, Village village) {
         if (mine.getQuantity() > 0) {
             village.setStone(village.getStone() + 5);
+        } else {
+            System.out.println("Vous n'avez pas de mine.");
         }
 
         return village.getStone();
+    }
+
+    public int miningIron(Mine mine, Village village) {
+        if (mine.getQuantity() > 0) {
+            village.setIron(village.getIron() + 3);
+        } else {
+            System.out.println("Vous n'avez pas de mine.");
+        }
+
+        return village.getIron();
     }
 }

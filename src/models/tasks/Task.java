@@ -64,11 +64,22 @@ public class Task {
 
     public int miningIron(Mine mine, Village village) {
         if (mine.getQuantity() > 0) {
-            village.setIron(village.getIron() + 3);
+            village.setIron(village.getIron() + 4);
         } else {
             System.out.println("Vous n'avez pas de mine.");
         }
 
         return village.getIron();
+    }
+
+    public int miningIronAndStone(Mine mine, Village village) {
+        if (mine.getQuantity() > 0) {
+            village.setStone(village.getStone() + 3);
+            village.setIron(village.getIron() + 2);
+        } else {
+            System.out.println("Vous n'avez pas de mine.");
+        }
+
+        return village.getStone() + village.getIron();
     }
 }

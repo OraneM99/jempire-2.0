@@ -1,12 +1,12 @@
 package models.tasks;
 
 import models.buildings.Farm;
+import models.buildings.Mine;
 import models.buildings.Village;
 import models.characters.Villager;
 
 public class Task {
     String name;
-    boolean isFarmer = false;
 
     public Task(String name) {
         this.name = name;
@@ -26,12 +26,35 @@ public class Task {
         System.out.println(villager.getQuantity());
     }
 
+    public void buildFarm(Village village, Farm farm) {
+        if (village.getWood() >= 8) {
+            farm.setQuantity(farm.getQuantity() + 1);
+        } else {
+            System.out.println("Vous n'avez pas suffisament de bois.");
+        }
+    }
+
+    public void buildMine(Village village, Mine mine) {
+        if (village.getWood() >= 10) {
+            mine.setQuantity(mine.getQuantity() + 1);
+        } else {
+            System.out.println("Vous n'avez pas suffisament de bois.");
+        }
+    }
+
     public int workFarm(Farm farm, Village village) {
-        if (!isFarmer) {
-            if (farm.getQuantity() > 0) {
+        if (farm.getQuantity() > 0) {
                 village.setFood(village.getFood() + 5);
-            }
+                System.out.println("Vous avez gagné 5 de nourriture !");
         }
         return village.getFood();
+    }
+
+    public int miningStone(Mine mine, Village village) {
+        if (mine.getQuantity() > 0) {
+            village.setStone(village.getStone() + 5);
+        }
+
+        return village.getStone();
     }
 }

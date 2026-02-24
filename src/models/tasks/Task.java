@@ -1,5 +1,6 @@
 package models.tasks;
 
+import models.buildings.DefenseWall;
 import models.buildings.Farm;
 import models.buildings.Mine;
 import models.buildings.Village;
@@ -20,26 +21,49 @@ public class Task {
         this.name = name;
     }
 
-    public void buildHouse(Villager villager) {
-        villager.setQuantity(villager.getQuantity() + 1);
-        System.out.println("Vous avez gagné 1 villageois !");
-        System.out.println(villager.getQuantity());
+    public void buildHouse(Villager villager, Village village) {
+        if (village.getWood() >= 10) {
+
+            villager.setQuantity(villager.getQuantity() + 1);
+            System.out.println("Vous avez gagné 1 villageois !");
+            village.setWood(village.getWood() - 10);
+
+        } else {
+            System.out.println("Vous n'avez pas suffisament de bois.");
+        }
     }
 
     public void buildFarm(Village village, Farm farm) {
+
         if (village.getWood() >= 8) {
             farm.setQuantity(farm.getQuantity() + 1);
+            village.setStone(village.getStone() - 8);
         } else {
             System.out.println("Vous n'avez pas suffisament de bois.");
         }
+
     }
 
     public void buildMine(Village village, Mine mine) {
+
         if (village.getWood() >= 10) {
             mine.setQuantity(mine.getQuantity() + 1);
+            village.setStone(village.getStone() - 10);
         } else {
             System.out.println("Vous n'avez pas suffisament de bois.");
         }
+
+    }
+
+    public void buildDefenseWall(Village village, DefenseWall defenseWall) {
+
+        if (village.getStone() >= 20) {
+            defenseWall.setQuantity(defenseWall.getQuantity() + 1);
+            village.setStone(village.getStone() - 20);
+        } else {
+            System.out.println("Vous n'avez pas assez de pierres.");
+        }
+
     }
 
     public int workFarm(Farm farm, Village village) {

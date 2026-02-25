@@ -4,10 +4,13 @@ import models.buildings.DefenseWall;
 import models.buildings.Farm;
 import models.buildings.Mine;
 import models.buildings.Village;
+import models.characters.Scout;
 import models.characters.Villager;
 
 public class Task {
     String name;
+    int min;
+    int max;
 
     public Task(String name) {
         this.name = name;
@@ -19,6 +22,10 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getRandomRessources(int min, int max) {
+        return (int) (Math.random() * (max - min) + min);
     }
 
     public void buildHouse(Villager villager, Village village) {
@@ -105,5 +112,15 @@ public class Task {
         }
 
         return village.getStone() + village.getIron();
+    }
+
+    public void exploring(Village village, Scout scout) {
+        if (scout.getQuantity() <= 0) {
+            System.out.println("Vous ne pouvez pas explorer sans éclaireur.");
+        } else {
+            village.setFood(getRandomRessources(1, 6));
+            village.setWood(getRandomRessources(1,6));
+            System.out.println("Bravo vous avez récupéré" + village.getFood() + " .");
+        }
     }
 }

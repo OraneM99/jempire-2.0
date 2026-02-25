@@ -2,8 +2,8 @@ package models.Item;
 
 public class Sword extends Weapon {
 
- public Sword(String name, int damage, double efficiency, double durability) {
-  super(name, damage, efficiency, durability);
+ public Sword() {
+  super("épée", 10, 5, 10);
  }
 
   public void useSword(double durability, int damage) {

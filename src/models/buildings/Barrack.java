@@ -8,8 +8,10 @@ public class Barrack extends Building {
   super("caserne", 0);
  }
 
- public void generateSoldier(Soldier soldier) {
-  soldier.setQuantity(soldier.getQuantity() + 1);
- }
+ /*
+  * public void generateSoldier(Soldier soldier) {
+  * soldier.setQuantity(soldier.getQuantity() + 1);
+  * }
+  */
 
 }

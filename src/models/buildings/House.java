@@ -1,10 +1,10 @@
 package models.buildings;
 
-import models.characters.Villager;
+import models.characters.Unit;
 
 public class House extends Building {
 
- Villager villager;
+ Unit villager;
 
  public House(String name) {
   super("maison", 1);

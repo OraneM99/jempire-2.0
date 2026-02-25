@@ -2,9 +2,17 @@ package models.characters;
 
 import models.Item.Item;
 
-public class Soldier extends Villager {
+public class Soldier extends Unit {
 
-    public Soldier(int quantity, String task, Item equippedItem) {
-        super(quantity, task, equippedItem, 20, 3, 5);
+    public Soldier() {
     }
+
+    public Soldier(String task, Item equippedItem, int health, int strength, int defense, String job) {
+        super(task, equippedItem, health, strength, defense, job);
+    }
+
+    public Soldier( int health, int strength, int defense, String job) {
+        super(health, strength, defense, job);
+    }
+
 }

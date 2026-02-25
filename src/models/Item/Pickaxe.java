@@ -2,8 +2,8 @@ package models.Item;
 
 public class Pickaxe extends Tool{
 
-  public Pickaxe(String name, double efficiency, double durability) {
-  super(name, efficiency, durability);
+  public Pickaxe() {
+  super("pioche", 5, 10);
  }
  
  public void usePickaxe(double durability, double efficiency) {

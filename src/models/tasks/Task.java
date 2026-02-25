@@ -1,7 +1,7 @@
 package models.tasks;
 
-import javax.tools.Tool;
-
+import models.Item.Tool;
+import models.Item.Pickaxe;
 import models.Item.Sword;
 import models.Item.Weapon;
 import models.buildings.DefenseWall;
@@ -144,6 +144,22 @@ public class Task {
             Weapon sword = new Sword();
             System.out.println("Vous avez crée " + sword.getName());
         }
+    }
 
+        public void createPickaxe(Village village, Tool tool, Workshop workshop, Craftman craftman) {
+        if (craftman.getQuantity() == 0) {
+            System.out.println("Vous ne pouvez pas construire d'armes sans artisan.");
+            return;
+        } else if (workshop.getQuantity() == 0) {
+            System.out.println("Vous ne pouvez pas construire d'armes sans atelier.");
+            return;
+        } else if (village.getStone() < 3 && village.getWood() < 5) {
+            System.out.println("Vous n'avez pas les ressources nécessaires pour construire une arme.");
+        } else {
+            village.setStone(village.getStone() - 3);
+            village.setWood(village.getWood() - 5);
+            Tool pickaxe = new Pickaxe();
+            System.out.println("Vous avez crée " + pickaxe.getName());
+        }
     }
 }

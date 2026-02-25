@@ -5,7 +5,7 @@ import models.characters.Soldier;
 public class Barrack extends Building {
 
  public Barrack() {
-  super("caserne", 0);
+  super("caserne");
  }
 
  /*

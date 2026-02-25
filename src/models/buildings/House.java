@@ -4,10 +4,10 @@ import models.characters.Unit;
 
 public class House extends Building {
 
- Unit villager;
+ /* Unit villager; */
 
  public House(String name) {
-  super("maison", 1);
+  super("maison");
  }
 
 }

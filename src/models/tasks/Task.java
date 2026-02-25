@@ -63,9 +63,15 @@ public class Task {
 
     public void buildHouse(Unit villager, Village village) {
         if (village.getWood() >= 10) {
+            // j'ajoute une maison dans mon village
+            //Je recupére mon nombre de villageois
+            // J'incrémente de 1
+            village.addUnit(villager);
             countVillagers += 1;
-            System.out.println("Vous avez gagné 1 villageois !");
+            //Je retranche 10 à ma quantité de bois.
             village.setWood(village.getWood() - 10);
+            
+            System.out.println("Vous avez gagné 1 villageois !");
 
         } else {
             System.out.println("Vous n'avez pas suffisament de bois.");

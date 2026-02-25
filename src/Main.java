@@ -9,12 +9,11 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        int usedVillagers = countVillagers;
-        usedVillagers--;
+        /* int usedVillagers = countVillagers; */
+        /* usedVillagers--; */
         Village player1 = new Village();
         Villager villager= new Villager(10, 1, 1,"Villageois");
         player1.addUnit(villager);
-        countVillagers++;
 
         boolean quitMenu = false;
         
@@ -47,6 +46,8 @@ public class Main {
                 default -> System.out.println("Impossible de faire cette action");
                 
             }
+        
+            /* System.out.println(player1.getVillagersUnits()); */
         } while (!quitMenu);
         System.out.println("Merci d'avoir joué, à une prochaine fois !");
         scanner.close();

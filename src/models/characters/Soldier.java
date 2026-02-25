@@ -1,6 +1,6 @@
 package models.characters;
 
-import models.Item;
+import models.Item.Item;
 
 public class Soldier extends Villager {
 

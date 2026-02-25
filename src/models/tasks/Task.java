@@ -1,9 +1,15 @@
 package models.tasks;
 
+import javax.tools.Tool;
+
+import models.Item.Sword;
+import models.Item.Weapon;
 import models.buildings.DefenseWall;
 import models.buildings.Farm;
 import models.buildings.Mine;
 import models.buildings.Village;
+import models.buildings.Workshop;
+import models.characters.Craftman;
 import models.characters.Scout;
 import models.characters.Villager;
 
@@ -119,8 +125,25 @@ public class Task {
             System.out.println("Vous ne pouvez pas explorer sans éclaireur.");
         } else {
             village.setFood(getRandomRessources(1, 6));
-            village.setWood(getRandomRessources(1,6));
+            village.setWood(getRandomRessources(1, 6));
             System.out.println("Bravo vous avez récupéré" + village.getFood() + " .");
         }
+    }
+
+    public void createWeapon(Village village, Weapon weapon, Workshop workshop, Craftman craftman) {
+        if (craftman.getQuantity() == 0) {
+            System.out.println("Vous ne pouvez pas construire d'armes sans artisan.");
+            return;
+        } else if (workshop.getQuantity() == 0) {
+            System.out.println("Vous ne pouvez pas construire d'armes sans atelier.");
+            return;
+        } else if (village.getIron() < 8) {
+            System.out.println("Vous n'avez pas les ressources nécessaires pour construire une arme.");
+        } else {
+            village.setIron(village.getIron() - 8);
+            Weapon sword = new Sword();
+            System.out.println("Vous avez crée " + sword.getName());
+        }
+
     }
 }

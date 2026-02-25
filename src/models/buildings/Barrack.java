@@ -1,17 +1,14 @@
 package models.buildings;
 
 import models.characters.Soldier;
+import models.characters.Unit;
 
 public class Barrack extends Building {
 
- public Barrack() {
-  super("caserne", 0);
- }
+   public Barrack() {
+   }
 
- /*
-  * public void generateSoldier(Soldier soldier) {
-  * soldier.setQuantity(soldier.getQuantity() + 1);
-  * }
-  */
-
+   public Barrack(String name) {
+      super("Caserne");
+   }
 }

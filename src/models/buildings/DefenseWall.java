@@ -3,7 +3,10 @@ package models.buildings;
 public class DefenseWall extends Building {
 
  public DefenseWall() {
-  super("Mur de défense", 0);
  }
- 
+
+ public DefenseWall(String name) {
+  super("Mur de défense");
+ }
+
 }

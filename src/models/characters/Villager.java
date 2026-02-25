@@ -4,6 +4,8 @@ import models.Item.Item;
 
 public class Villager extends Unit {
 
+  public Villager() {}
+
   public Villager(String task, Item equippedItem, int health, int strength, int defense, String job) {
     super(task, equippedItem, health, strength, defense, job);
   }

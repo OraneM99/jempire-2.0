@@ -12,7 +12,6 @@ public class Village {
     private int iron;
     private int gold;
     private List<Unit> units = new ArrayList<>();
-    private int people;
 
     public Village() {
         this.wood = 0;
@@ -20,7 +19,6 @@ public class Village {
         this.food = 100;
         this.iron = 0;
         this.gold = 50;
-        this.people = 1;
     }
 
     public int getWood() {
@@ -68,13 +66,19 @@ public class Village {
                 gold + " | Fer : " + iron + " | Nourriture : " + food);
     }
 
-    public List<String> getVillagersUnits() {
-        List<String> unitList = new ArrayList<>();
-        for (Unit unit : units) {
-            unitList.add(unit.getjob());
+    public void displayUnits() {
+        if (units.isEmpty()) {
+            System.out.println("Vous n'avez aucun habitant.");
+            return;
         }
-        System.out.println("Coucou, voici tes unités, " + unitList);
-        return unitList;
+
+        System.out.println("===== Vos unités =====");
+
+        for (Unit unit : units) {
+            System.out.println("- " + unit.getjob());
+        }
+
+        System.out.println("Total : " + units.size());
     }
 
     public List<Unit> getUnits() {
@@ -87,13 +91,5 @@ public class Village {
 
     public void setUnits(List<Unit> units) {
         this.units = units;
-    }
-
-    public int getPeople() {
-        return people;
-    }
-
-    protected void setPeople(int people) {
-        this.people = people;
     }
 }

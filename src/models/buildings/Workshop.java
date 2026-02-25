@@ -3,7 +3,10 @@ package models.buildings;
 public class Workshop extends Building {
 
  public Workshop() {
-  super("Atelier", 0);
+ }
+
+ public Workshop(String name) {
+  super("Atelier");
  }
 
 }

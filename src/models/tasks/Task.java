@@ -6,9 +6,8 @@ import java.nio.channels.Pipe.SourceChannel;
 import java.util.Scanner;
 
 import models.Item.Pickaxe;
-import models.Item.Sword;
-import models.Item.Weapon;
 import models.buildings.Barrack;
+import models.buildings.Building;
 import models.buildings.DefenseWall;
 import models.buildings.Farm;
 import models.buildings.House;
@@ -17,13 +16,14 @@ import models.buildings.Village;
 import models.buildings.Workshop;
 import models.characters.Craftman;
 import models.characters.Scout;
+import models.characters.Soldier;
 import models.characters.Unit;
+import models.characters.Villager;
 
 public class Task {
     String name;
     int min;
     int max;
-    int countVillagers = 1;
 
     public Task(String name) {
         this.name = name;
@@ -54,7 +54,7 @@ public class Task {
         byte input = scanner.nextByte();
 
         switch (input) {
-            case 1 -> buildHouse(village, house);
+            case 1 -> buildHouse();
         
             default:
                 break;
@@ -63,46 +63,70 @@ public class Task {
 
     public void buildHouse(Unit villager, Village village) {
         if (village.getWood() >= 10) {
-            countVillagers += 1;
-            System.out.println("Vous avez gagné 1 villageois !");
+            village.addUnit(new Villager());
             village.setWood(village.getWood() - 10);
-
+            System.out.println("Bravo ! Vous avez gagné un nouveau villageois.");
         } else {
-            System.out.println("Vous n'avez pas suffisament de bois.");
+            System.out.println("Pas assez de ressources.");
         }
     }
 
-    public void buildFarm(Village village, Farm farm) {
-
-        if (village.getWood() >= 8) {
-            farm.setQuantity(farm.getQuantity() + 1);
-            village.setStone(village.getStone() - 8);
+    public void buildFarm(Village village, Farm farm, Building building) {
+        if (village.getWood() >= 10 && village.getStone() >= 2) {
+            building.addFarm(new Farm());
+            village.setWood(village.getWood() - 10);
+            village.setStone(village.getStone() - 2);
+            System.out.println("Vous avez crée une ferme !");
         } else {
-            System.out.println("Vous n'avez pas suffisament de bois.");
+            System.out.println("Pas assez de ressources.");
         }
 
     }
 
-    public void buildMine(Village village, Mine mine) {
-
+    public void buildMine(Village village, Mine mine, Building building) {
         if (village.getStone() >= 10) {
-            mine.setQuantity(mine.getQuantity() + 1);
+            building.addMine(new Mine());
             village.setStone(village.getStone() - 10);
+            System.out.println("Vous avez crée une mine !");
         } else {
-            System.out.println("Vous n'avez pas suffisament de bois.");
+            System.out.println("Pas assez de ressources.");
         }
-
     }
 
-    public void buildDefenseWall(Village village, DefenseWall defenseWall) {
-
-        if (village.getStone() >= 20) {
-            defenseWall.setQuantity(defenseWall.getQuantity() + 1);
-            village.setStone(village.getStone() - 20);
+    public void buildDefenseWall(Village village, DefenseWall defenseWall, Building building) {
+        if (village.getStone() >= 15 && village.getIron() >= 2) {
+            building.addDefenseWall(new DefenseWall());
+            village.setStone(village.getStone() - 15);
+            village.setIron(village.getIron() - 2);
+            System.out.println("Vous avez crée un mur de défense !");
         } else {
-            System.out.println("Vous n'avez pas assez de pierres.");
+            System.out.println("Pas assez de ressources.");
         }
+    }
 
+    public void buildBarracks(Village village, Barrack barrack, Building building) {
+        if (village.getWood() >= 5 && village.getStone() >= 10) {
+            building.addBarrack(new Barrack());
+            village.addUnit(new Soldier());
+            village.setWood(village.getWood() - 5);
+            village.setStone(village.getStone() - 10);
+            System.out.println("Vous avez crée une caserne !");
+        } else {
+            System.out.println("Pas assez de ressources.");
+        }
+    }
+
+    public void buildWorkshop(Village village, Workshop workshop, Building building) {
+        if (village.getWood() >= 5 && village.getStone() >= 5 && village.getIron() >= 2) {
+            building.addWorkshop(new Workshop());
+            village.addUnit(new Craftman());
+            village.setWood(village.getWood() - 5);
+            village.setStone(village.getStone() - 5);
+            village.setIron(village.getIron() - 2);
+            System.out.println("Vous avez crée un atelier !");
+        } else {
+            System.out.println("Pas assez de ressources.");
+        }
     }
 
     public int workFarm(Farm farm, Village village) {

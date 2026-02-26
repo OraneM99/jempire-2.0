@@ -1,18 +1,20 @@
+import java.lang.module.ModuleDescriptor.Builder;
 import java.util.Scanner;
 
+import models.buildings.Building;
 import models.buildings.Village;
 import models.characters.Soldier;
 import models.characters.Unit;
 import models.characters.Villager;
+import models.tasks.Task;
 
 public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        /* int usedVillagers = countVillagers; */
-        /* usedVillagers--; */
         Village player1 = new Village();
         Villager villager= new Villager(10, 1, 1,"Villageois");
+
         player1.addUnit(villager);
 
         boolean quitMenu = false;
@@ -31,10 +33,15 @@ public class Main {
             System.out.println("0. Quitter");
 
             byte input = scanner.nextByte();
+            Task task = new Task();
 
             switch (input) {
                 case 1 -> player1.getAllResources();
-                case 2 -> System.out.println("On l'a pas fait encore");
+                case 2 -> {
+                    task.menuBuilding(player1, villager);
+                    player1.displayUnits();
+                    player1.displayBuildings();
+                }
                 case 3 -> System.out.println("On l'a pas fait encore");
                 case 4 -> System.out.println("On l'a pas fait encore");
                 case 5 -> System.out.println("On l'a pas fait encore");

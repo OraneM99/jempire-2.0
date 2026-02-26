@@ -2,10 +2,13 @@ package models.characters;
 
 import models.Item.Item;
 
-public class Boss extends Villager {
+public class Boss extends Unit {
 
-    public Boss(int quantity, String task, Item equippedItem) {
-        super(quantity, task, equippedItem, 30, 7, 7);
+    public Boss() {
+    }
+
+    public Boss(String task, Item equippedItem, int health, int strength, int defense, String job) {
+        super(task, equippedItem, 30, 7, 7, "Chef du village");
     }
 
 }

@@ -1,6 +1,8 @@
 # jempire-2.0
 Projet Jempire version 2.0
 
+## UML Diagram for menuing
+
 ```mermaid
 flowchart TD
 
@@ -48,6 +50,8 @@ C --> P([Quitter])
 	
 ```
 ______
+
+## UML diagram for global project
 
 ```mermaid
 classDiagram 

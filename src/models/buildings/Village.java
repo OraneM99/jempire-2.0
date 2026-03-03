@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.characters.Unit;
+import models.characters.Villager;
 
 public class Village {
     private int wood;
@@ -225,5 +226,4 @@ public class Village {
     public void setBuildings(List<Building> buildings) {
         this.buildings = buildings;
     }
-
 }

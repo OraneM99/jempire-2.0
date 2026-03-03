@@ -47,58 +47,7 @@ N -- No --> B
 C --> P([Quitter])
 	
 ```
-
-```mermaid
-flowchart TD
-
-A([Début de journée]) --> B[Afficher le statut du village]
-B --> C{Menu principal}
-C --> D[Détails du village]
-D --> B
-C --> E[Construire un bâtiment]
-E --> Q[Faites votre choix]
-Q --> R[Une maison]
-R --> B
-Q --> S[Une ferme]
-S --> B
-Q --> T[Une mine]
-T --> B
-Q --> U[Un mur de défense]
-U --> B
-Q --> V[Une caserne]
-V --> B
-Q --> W[Un atelier]
-W --> B
-Q --> P[Quitter]
-E --> B
-C --> F[Assigner une unité]
-F --> B
-C --> G[Former une unité]
-G --> B
-C --> H[Assigner une unité]
-H --> B
-C --> I[Libérer une unité]
-I  --> B
-C --> J[Améliorer un bâtiment]
-J --> B
-C --> K[Recruter une unité]
-K --> Y[Soldat]
-K --> Z[Eclaireur]
-K --> B
-C --> L[Equiper une unité]
-L --> B
-C --> M[Passer au jour suivant]
-C --> N{Population <= 0}
-N -- Yes --> O([Game over])
-N -- No --> B
-C --> P([Quitter])
-	
-```
-
-
-
-
-
+______
 
 ```mermaid
 classDiagram 

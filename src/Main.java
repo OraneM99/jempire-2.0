@@ -1,4 +1,5 @@
 import java.lang.module.ModuleDescriptor.Builder;
+import java.util.List;
 import java.util.Scanner;
 
 import models.buildings.Building;
@@ -9,18 +10,56 @@ import models.characters.Villager;
 import models.tasks.Task;
 
 public class Main {
+
+
+    private static void feedingVillagers(Village village) {
+        int food = village.getFood();
+        List<Unit> units = village.getUnits();
+
+        if (units.isEmpty()) {
+            System.out.println("Tous vos habitants sont morts.");
+            return;
+        }
+
+        /* On parcourt notre liste d'unité pour les nourrir */
+        int i = 0;
+        while (i < units.size() && food > 0) {
+            food--;
+            i++;
+        }
+
+        /*
+        * Si la nourriture est insuffisante on supprime les unités restantes
+        */
+        if (i < units.size()) {
+            int deficit = units.size() - i;
+            System.out.println("FAMINE !! " + deficit + " habitants sont morts.");
+
+            for (int j = 0; j < deficit; j ++) {
+                units.remove(units.size() - 1); /* On supprime depuis la fin */
+            }
+        }
+
+        /* On met à jour la nourriture restante */
+        village.setFood(food);
+        System.out.println("Vous avez nourrit vos habitants, il reste " + food + " de nourriture.");
+    }
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
         Village player1 = new Village();
-        Villager villager= new Villager(10, 1, 1,"Villageois");
+        Villager villager = new Villager();
 
+        int day = 1;
         player1.addUnit(villager);
-
         boolean quitMenu = false;
         
-        do {    
-            System.out.println("--- MENU ---");
+
+        do {
+            System.out.println("\n=======================");
+            System.out.println("\n==== JEMPIRE V2.0 ====");
+            System.out.println("\n=======================");
             System.out.println("1. Details du village");
             System.out.println("2. Construire un bâtiment");
             System.out.println("3. Assigner une unité");
@@ -51,10 +90,12 @@ public class Main {
                 case 9 -> System.out.println("On l'a pas fait encore");
                 case 0 -> quitMenu = true;
                 default -> System.out.println("Impossible de faire cette action");
-                
             }
-        
-            /* System.out.println(player1.getVillagersUnits()); */
+
+            day++;
+            System.out.println("Jour : " + day);
+            feedingVillagers(player1);
+
         } while (!quitMenu);
         System.out.println("Merci d'avoir joué, à une prochaine fois !");
         scanner.close();

@@ -55,9 +55,9 @@ public class Task {
             System.out.println("1. Une maison | Coût : 10 bois");
             System.out.println("2. Une ferme | Coût : 1 pierre, 8 bois");
             System.out.println("3. Une mine | Coût : 10 bois");
-            System.out.println("4. Mur de défense | Coût : ");
-            System.out.println("5. Une caserne | Coût : ");
-            System.out.println("6. Un atelier | Coût : ");
+            System.out.println("4. Mur de défense | Coût : 10 Pierres, 8 Fer");
+            System.out.println("5. Une caserne | Coût : 5 Bois, 10 Pierres");
+            System.out.println("6. Un atelier | Coût : 5 Bois, 5 Pierres, 5 Fer");
             System.out.println("0. Quitter");
 
             byte input = scanner.nextByte();
@@ -84,8 +84,7 @@ public class Task {
             House house = new House();
             village.addBuilding(house);
 
-            village.setPopulationCapacity(
-                    village.getPopulationCapacity() + 2);
+            village.setPopulationCapacity(village.getPopulationCapacity() + 2);
 
             System.out.println("Maison construite ! Capacité +2");
 
@@ -189,7 +188,7 @@ public class Task {
      * }
      */
 
-    // public void createWeapon(Village village, Weapon weapon, Workshop workshop,
+    // public void createSword(Village village, Weapon weapon, Workshop workshop,
     // Craftman craftman) {
     // if (village.getIron() < 8) {
     // System.out.println("Vous n'avez pas les ressources nécessaires pour

@@ -8,7 +8,7 @@ public class Craftman extends Unit {
     }
 
     public Craftman(String task, Item equippedItem, int health, int strength, int defense, String job) {
-        super(task, equippedItem, 10, 2, 2, "artisan");
+        super(task, equippedItem, 10, 3, 2, "Artisan");
     }
 
 }
